@@ -24,6 +24,7 @@ export class CreateGameRequest {
   imageShow: { image: string }[];
 
   @ApiProperty()
+  @IsOptional()
   mode: string;
 }
 

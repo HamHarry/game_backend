@@ -21,19 +21,20 @@ export class GamesService {
     return createdGame;
   }
 
-  findAllGame() {
-    return `This action returns all games`;
+  async findAllGame() {
+    const findedGames = await this.gamesModel.find();
+    return findedGames;
   }
 
-  findGameById(id: string) {
+  async findGameById(id: string) {
     return `This action returns a #${id} game`;
   }
 
-  updateGameById(id: string, updateGameRequest: CreateGameRequest) {
+  async updateGameById(id: string, updateGameRequest: CreateGameRequest) {
     return updateGameRequest;
   }
 
-  deleteGameById(id: string) {
+  async deleteGameById(id: string) {
     return `This action removes a #${id} game`;
   }
 }
