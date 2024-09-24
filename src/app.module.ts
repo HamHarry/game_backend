@@ -1,11 +1,23 @@
-/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { GamesModule } from './games/games.module';
 
+// ConfigModule เอาไว้เรียกใช้ env *****
 @Module({
-  imports: [GamesModule],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
+    MongooseModule.forRootAsync({
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get('DB_URL'),
+      }),
+      inject: [ConfigService],
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

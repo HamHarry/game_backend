@@ -1,11 +1,10 @@
-/* eslint-disable prettier/prettier */
 import {
   Controller,
-  Get,
   Post,
   Body,
-  Patch,
+  Get,
   Param,
+  Patch,
   Delete,
 } from '@nestjs/common';
 import { GamesService } from './games.service';

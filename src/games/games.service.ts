@@ -1,12 +1,11 @@
-/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import {
   CreateGameListRequest,
   CreateGameRequest,
 } from './requests/create-game.request';
-import { InjectModel } from '@nestjs/mongoose';
 import { Games, GamesDocument } from './schemas/game.schema';
-import { Model } from 'mongoose';
 
 @Injectable()
 export class GamesService {
